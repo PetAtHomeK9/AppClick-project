@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
+
+
 def log_in(request):
     if request.method=='POST':
         form= LoginForm(request, data=request.POST)
@@ -44,11 +46,12 @@ def sign_up(request):
             }
             return render(request, 'signup.html', context)
 
-
     else:
         form= SignupForm()
         context = {
             'form':form
         }
         return render(request, 'signup.html', context)
+    
+
 
