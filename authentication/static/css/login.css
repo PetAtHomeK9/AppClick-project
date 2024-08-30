@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+.auth-head {
+    text-align: center;
+    color:#333 ;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 900;
+}
+
+.auth input[type='text'],
+.auth input[type='email'],
+.auth input[type='password'],
+.auth button {
+     border: 1px solid #ccc;
+     border-radius: 4px;
+     width: 100%;
+     margin: 10px 0;
+     padding: 10px;
+     height: 48px;
+
+}
+.auth{
+    background-color: #fff;
+    border-radius: 5px;
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;;
+}
+
+.auth label{
+    display: none;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.auth button[type='submit']{
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 4px;
+    border: none;
+}
+.auth button[type='submit'] :hover{
+    background-color: #45a049; 
+}
+
