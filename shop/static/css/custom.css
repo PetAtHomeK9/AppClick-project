@@ -1,0 +1,8 @@
+.detail-box {
+    flex-direction: column;
+}
+
+.img-box {
+    padding: 0 !important;
+    padding-top: 2px !important;
+}
