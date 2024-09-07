@@ -854,3 +854,59 @@ a:focus {
 
 /* end footer section*/
 /*# sourceMappingURL=style.css.map */
+
+/* Base styles for the dog details page */
+.dog-details {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.dog-details h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.dog-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.dog-details p {
+  font-size: 1.2em;
+  margin: 10px 0;
+  color: #555;
+}
+
+.dog-details strong {
+  color: #333;
+}
+
+.dog-details .btn-primary {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dog-details .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.dog-details .text-danger {
+  color: #dc3545;
+  font-size: 1.2em;
+}
