@@ -10,14 +10,14 @@ from django.contrib.auth.decorators import login_required
 
 def log_in(request):
     if request.method=='POST':
-        form= LoginForm(request, data=request.POST)
+        form= LoginForm(request.POST)
         if form.is_valid():
             username=form.cleaned_data.get('username')
             password=form.cleaned_data.get('password')
             user = authenticate(request, username=username,password=password)
             if user != None:
                 login(request, user)
-                return redirect('practice')
+                return redirect('profile')
             else:
                 form.add_error(None, 'Invalid Username or Password')
                 
@@ -37,12 +37,10 @@ def sign_up(request):
             password=form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('practice')
-
+            return redirect('index')
         else:
-            form= SignupForm()
             context = {
-            'form':form
+                'form':form
             }
             return render(request, 'signup.html', context)
 
@@ -51,7 +49,14 @@ def sign_up(request):
         context = {
             'form':form
         }
-        return render(request, 'signup.html', context)
-    
-
-
+    return render(request, 'signup.html', context)
+@login_required
+def log_out(request):
+    pass
+@login_required
+def profile(request):
+    user= request.user
+    context={
+        'user':user
+    }
+    return render(request, 'profile.html', context)

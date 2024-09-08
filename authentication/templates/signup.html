@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+{% load static %}
+<link rel='stylesheet' href='{% static "css/signup.css" %}'>
+<body>
+<div class='form-container'>
+<h2 class='header'>Sign Up(E-mail verification)</h2>
+<form method='post' class='auth'>
+{% csrf_token %}
+{%if form.errors%}
+<div>
+     <ul>
+         {% for field, errors in form.errors.items%}
+         {% for error in errors%}
+          <li>
+          {{error}}
+          </li>
+         {% endfor %}
+         {% endfor %}
+    </ul>
+</div>
+{% endif %}
+<div class='show-label'>
+{{form.non_field_errors}}
+{{form.first_name.label_tag}}
+{{form.first_name}}
+</div>
+<div class='show-label'>
+{{form.last_name.label_tag}}
+{{form.last_name}}
+</div>
+<div class='show-label'>
+{{form.email.label_tag}}
+{{form.email}}
+</div>
+<div class='show-label'>
+{{form.username.label_tag}}
+{{form.username}}
+</div>
+<div class='show-label'>
+{{form.password1.label_tag}}
+{{form.password1}}
+</div>
+<div class='show-label'>
+{{form.password2.label_tag}}
+{{form.password2}}
+</div>
+<button type='submit'>Continue</button>
+</form><br><br>
+<p>Already have an account?<a href='{% url "log_in" %}'> Login</a></p>
+</div>
+
+</body>
+</html>

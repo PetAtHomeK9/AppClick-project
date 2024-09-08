@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<title >Your profile</title>
+{% load static %}
+<link rel='stylesheet' href='{% static "css/profile.css" %}'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+</head>
+<body>
+    <div class='message'>
+      <h1 class='logo' >Welcome {{user.username}}<img src='{% static "img/mac_os.jpg" %}'></h1>
+    </div>
+    <div class='profile-container'>
+    <p><strong>First name: {{user.first_name}} </strong></p>
+    <p><strong>Last name: {{user.last_name}} </strong></p>
+    <p><strong>Email: {{user.email}} </strong></p>
+    <a href='{% url "log_out" %}'>Logout</a>
+    
+    </div>
+
+</body>
+</html>
