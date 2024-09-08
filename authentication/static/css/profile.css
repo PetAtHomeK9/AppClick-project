@@ -1,0 +1,19 @@
+
+.logo img {
+    width: 50px; /* Set the width to a fixed size */
+    height: 50px; /* Set the height to a fixed size */
+    border-radius: 50%; /* Make the image round */
+    object-fit: cover; /* Ensure the image covers the entire area */
+    border: 3px solid #ddd; /* Add a subtle border */
+}
+.message{
+    text-align: center;
+    background-color: #f9f9f9;
+    text-transform: capitalize;
+    display: flex;
+    font-weight: 100px;
+    font-size: 35px;
+    flex-direction: column;
+    justify-content: center;
+    
+}
