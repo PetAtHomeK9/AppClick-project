@@ -17,7 +17,7 @@ def log_in(request):
             user = authenticate(request, username=username,password=password)
             if user != None:
                 login(request, user)
-                return redirect('profile')
+                return redirect('index')
             else:
                 form.add_error(None, 'Invalid Username or Password')
                 
