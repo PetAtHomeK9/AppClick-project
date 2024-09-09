@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404,redirect
 from .models import User
-from .forms import SignupForm,LoginForm
+from .forms import SignupForm,LoginForm, ChangePasswordForm
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import PasswordChangeView
 # Create your views here.
 
 
@@ -17,7 +18,7 @@ def log_in(request):
             user = authenticate(request, username=username,password=password)
             if user != None:
                 login(request, user)
-                return redirect('profile')
+                return redirect('index')
             else:
                 form.add_error(None, 'Invalid Username or Password')
                 
@@ -60,3 +61,8 @@ def profile(request):
         'user':user
     }
     return render(request, 'profile.html', context)
+
+class ChangePasswordView(PasswordChangeView):
+    form_class= ChangePasswordForm
+    template_name='change_password.html'
+    success_url='done/'
