@@ -4,18 +4,19 @@
 <title >Your profile</title>
 {% load static %}
 <link rel='stylesheet' href='{% static "css/profile.css" %}'>
+<link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 </head>
 <body>
-    <div class='message'>
+    <div class='profile-card'>
       <h1 class='logo' >Welcome {{user.username}}<img src='{% static "img/mac_os.jpg" %}'></h1>
     </div>
-    <div class='profile-container'>
-    <p><strong>First name: {{user.first_name}} </strong></p>
-    <p><strong>Last name: {{user.last_name}} </strong></p>
-    <p><strong>Email: {{user.email}} </strong></p>
-    <a href='{% url "log_out" %}'>Logout</a>
-    
+    <div class='profile-text'>
+    <p><i class='fas fa-user fa-sm'></i> <strong>First name:</strong> {{user.first_name}} </p>
+    <p><i class='fas fa-user fa-sm'></i> <strong>Last name:</strong> {{user.last_name}} </p>
+    <p><i class='fas fa-envelope fa-sm'></i> <strong>Email:</strong> {{user.email}} </p>
+    <a class='logout-btn' href='{% url "log_out" %}'><i class='fas fa-sign-out-alt'></i> Logout</a>
+    <a class='logout-btn' href='{% url "change-password" %}'>Change Password</a>
     </div>
 
 </body>
