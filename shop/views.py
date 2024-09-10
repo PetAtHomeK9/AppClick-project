@@ -14,7 +14,7 @@ def dog_details(request, dog_id):
 
 @login_required
 def place_order(request, dog_id):
-    dog = Dog.objects.get(id=dog_id, availability=True)
+    dog = get_object_or_404(Dog, id=dog_id, availability=True)
     
     if request.method == 'POST':
         # Create the order
@@ -26,16 +26,12 @@ def place_order(request, dog_id):
         dog.availability = False
         dog.save()
         
+        # Redirect to the order detail page
         return redirect('order_detail', order_id=order.id)
     
-    return render(request, 'dogs_list.html', {'dog': dog})
+    return render(request, 'place_order.html', {'dog': dog})
 
+def order_detail(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+    return render(request, 'order_detail.html', {'order': order})
 
-
-@login_required
-def dog_details(request, dog_id):
-    dog = get_object_or_404(Dog, id=dog_id)
-    context = {
-        'dog': dog
-    }
-    return render(request, 'dog_details.html', context)

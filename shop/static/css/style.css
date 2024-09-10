@@ -910,3 +910,151 @@ a:focus {
   color: #dc3545;
   font-size: 1.2em;
 }
+
+
+
+/* Base styles */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+header {
+  background: #333;
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+/* Navigation bar */
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 15px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Dog Listing */
+.dog-listing {
+  padding: 20px 0;
+}
+
+.dog-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.dog-card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.dog-thumbnail {
+  width: 100%;
+  height: auto;
+}
+
+.dog-card h2 {
+  font-size: 1.2rem;
+  margin: 10px;
+}
+
+.dog-card p {
+  margin: 10px;
+}
+
+/* Dog Details */
+.dog-details {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.dog-details img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.dog-details h1 {
+  margin-top: 0;
+}
+
+.dog-details p {
+  margin: 10px 0;
+}
+
+/* Place Order */
+.order-details {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.order-details h1 {
+  margin-top: 0;
+}
+
+.order-details img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.order-details form {
+  margin-top: 20px;
+}
+
+.order-details button {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.order-details button:hover {
+  background-color: #218838;
+}
+
+/* Order Detail */
+.order-details {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.order-details h1 {
+  margin-top: 0;
+}
+
+.order-details p {
+  margin: 10px 0;
+}

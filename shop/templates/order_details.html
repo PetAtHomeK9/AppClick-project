@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="order-details">
+    <h1>Order Confirmation</h1>
+    <p><strong>Dog:</strong> {{ order.dog.name }}</p>
+    <p><strong>Buyer:</strong> {{ order.buyer.username }}</p>
+    <p><strong>Total Price:</strong> ${{ order.total_price }}</p>
+    <p><strong>Status:</strong> {{ order.status }}</p>
+    <p>Thank you for your order! You will receive an email confirmation soon.</p>
+</div>
+{% endblock %}
