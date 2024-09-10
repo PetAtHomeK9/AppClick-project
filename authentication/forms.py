@@ -21,9 +21,21 @@ class SignupForm(UserCreationForm):
     password2=forms.CharField(min_length=8,required=True,
               widget=forms.PasswordInput({'placeholder':'Confirm Password'})
               )
+    phone= forms.IntegerField(required=True, widget=forms.TextInput({'placeholder':'phone'}))
+    ROLE_OPTIONS= (
+        ('seller','Seller'),
+        ('buyer','Buyer')   
+    )
+
+    role = forms.ChoiceField(choices=ROLE_OPTIONS, widget=forms.RadioSelect)
+
+
+
+
+
     class Meta:
         model= User
-        fields= ('first_name','last_name','email','username','password1','password2')
+        fields= ('first_name','last_name','email','username','password1','password2','phone','role')
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=20, label=None, required=True, widget=forms.TextInput({"placeholder" : "Enter your username"}))
