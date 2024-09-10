@@ -71,4 +71,21 @@
 
 }
 
+.choice{
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
 
+}
+.choice select{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    background-color: #f8f9fa;
+}
+.choice label{
+    font-weight: bold;
+    margin-right: 10px;
+    color: #343a40;
+}

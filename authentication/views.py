@@ -18,8 +18,12 @@ def log_in(request):
             user = authenticate(request, username=username,password=password)
             if user != None:
                 login(request, user)
-                return redirect('index')
-            else:
+                if user.roles=='seller':
+                    return redirect('seller_dashboard')
+                else:
+                    return redirect('buyer_dashboard')
+            return redirect('index')
+        else:
                 form.add_error(None, 'Invalid Username or Password')
                 
 
@@ -53,7 +57,8 @@ def sign_up(request):
     return render(request, 'signup.html', context)
 @login_required
 def log_out(request):
-    pass
+    logout(request)
+    return redirect('index')
 @login_required
 def profile(request):
     user= request.user
@@ -66,3 +71,13 @@ class ChangePasswordView(PasswordChangeView):
     form_class= ChangePasswordForm
     template_name='change_password.html'
     success_url='done/'
+
+@login_required
+def seller_dashboard(request):
+    
+    return render(request, 'seller.html')
+
+@login_required
+def buyer_dashboard(request):
+    
+    return render(request, 'buyer.html')
