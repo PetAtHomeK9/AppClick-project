@@ -1,20 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="dog-listing">
-    <h1>Available Dogs</h1>
-    <div class="dog-grid">
-        {% for dog in dogs %}
-            <div class="dog-card">
-                <a href="{% url 'dog_details' dog.id %}">
-                    <img src="{{ dog.display_img.url }}" alt="{{ dog.name }}" class="dog-thumbnail">
-                    <h2>{{ dog.name }}</h2>
-                    <p><strong>Price:</strong> ${{ dog.price }}</p>
-                </a>
-            </div>
-        {% empty %}
-            <p>No dogs available at the moment.</p>
-        {% endfor %}
-    </div>
+<div class="dog-details">
+    <h1>{{ dog.name }}</h1>
+    <img src="{{ dog.display_img.url }}" alt="{{ dog.name }}" class="dog-image">
+    <p><strong>Breed:</strong> {{ dog.breed }}</p>
+    <p><strong>Age:</strong> {{ dog.age }} years</p>
+    <p><strong>Gender:</strong> {{ dog.gender }}</p>
+    <p><strong>Description:</strong> {{ dog.description }}</p>
+    <p><strong>Price:</strong> ${{ dog.price }}</p>
+    <p><strong>Location:</strong> {{ dog.location }}</p>
+    <p><strong>Posted on:</strong> {{ dog.date_posted|date:"F j, Y" }}</p>
+
+    <!-- Add a Buy Now button -->
+    {% if dog.availability %}
+        <a href="{% url 'place_order' dog.id %}" class="btn btn-primary">Buy Now</a>
+    {% else %}
+        <p>This dog is no longer available.</p>
+    {% endif %}
 </div>
 {% endblock %}
