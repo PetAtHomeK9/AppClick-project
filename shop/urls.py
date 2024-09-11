@@ -8,6 +8,7 @@ urlpatterns = [
     path('dog_details/<int:dog_id>/', views.dog_details, name='dog_details'),
     path('place_order/<int:dog_id>/', views.place_order, name='place_order'),
     path('order_detail/<int:order_id>/', views.order_detail, name='order_detail'),
+    path('search/', views.search, name='search_results'),
 ]
 
 

@@ -14,7 +14,7 @@
 
     <!-- Add a Buy Now button -->
     {% if dog.availability %}
-        <a href="{% url 'place_order' dog.id %}" class="btn btn-primary">Buy Now</a>
+        <a href="{% url 'place_order' dog.id %}" class="btn btn-primary">Adopt Me</a>
     {% else %}
         <p>This dog is no longer available.</p>
     {% endif %}
