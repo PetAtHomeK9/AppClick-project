@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="order-details">
-    <h1>Place Order for {{ dog.name }}</h1>
+    <h1>Fetch Your Dog {{ dog.name }}</h1>
     <img src="{{ dog.display_img.url }}" alt="{{ dog.name }}" class="dog-image">
     <p><strong>Price:</strong> ${{ dog.price }}</p>
     <p><strong>Description:</strong> {{ dog.description }}</p>
@@ -10,7 +10,7 @@
     <form method="post" action="{% url 'place_order' dog.id %}">
         {% csrf_token %}
         <!-- Include any fields you want in the form, like name, address, etc. -->
-        <button type="submit" class="btn btn-primary">Confirm Order</button>
+        <button type="submit" class="btn btn-primary">Paw-sitive Purchase</button>
     </form>
 </div>
 {% endblock %}

@@ -7,6 +7,31 @@ def index(request):
     return render(request, 'index.html', {'dogs': dogs})
 
 
+def search(request):
+    query = request.GET.get('q', '')
+    sex = request.GET.get('sex', '')
+    age = request.GET.get('age', '')
+
+    dogs = Dog.objects.all()
+
+    if query:
+        dogs = dogs.filter(breed__icontains=query)
+    
+    if sex:
+        dogs = dogs.filter(gender=sex)
+    
+    if age:
+        dogs = dogs.filter(age__lte=age)
+    
+    context = {
+        'dogs': dogs,
+        'query': query,
+        'sex': sex,
+        'age': age
+    }
+    
+    return render(request, 'search_results.html', context)
+
 def dog_details(request, dog_id):
     dog = get_object_or_404(Dog, id=dog_id, availability=True)
 

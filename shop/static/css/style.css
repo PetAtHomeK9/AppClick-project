@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 @import url("font-awesome.min.css");
 body {
-  font-family: "poppins", sans-serif;
-  color: #101010;
-  background-color: #ffffff;
+  font-family: Arial, sans-serif;
+  color: #333333; /* Charcoal Gray */
+  background-color: #F0F0F0; /* Light Gray */
 }
 
 .layout_padding {
@@ -1057,4 +1057,101 @@ nav ul li a {
 
 .order-details p {
   margin: 10px 0;
+}
+
+
+/* CSS for logo */
+.logo {
+  height: 40px; /* Adjust height as needed */
+  margin-right: 10px; /* Space between logo and text */
+}
+
+
+.navbar {
+  background-color: #003366; /* Deep Blue */
+}
+
+.navbar a {
+  color: #F5F5DC; /* Warm Beige */
+}
+
+.navbar a:hover {
+  color: #CC5500; /* Burnt Orange */
+}
+
+
+
+/* General Styles */
+body {
+  font-family: Arial, sans-serif !important;
+  color: #333333 !important; /* Charcoal Gray */
+  background-color: #F0F0F0 !important; /* Light Gray */
+}
+
+/* Navbar */
+.navbar {
+  background-color: #003366 !important; /* Deep Blue */
+}
+
+.navbar a {
+  color: #F5F5DC !important; /* Warm Beige */
+}
+
+.navbar a:hover {
+  color: #CC5500 !important; /* Burnt Orange */
+}
+
+/* Search Form */
+.form-inline input[type="search"] {
+  border: 1px solid #9C9A6C !important; /* Sage Green */
+  background-color: #FFFFFF !important; /* White */
+}
+
+.form-inline button {
+  background-color: #CC5500 !important; /* Burnt Orange */
+  color: #FFFFFF !important; /* White */
+}
+
+.form-inline button:hover {
+  background-color: #003366 !important; /* Deep Blue */
+}
+
+/* Buttons */
+.btn {
+  background-color: #CC5500 !important; /* Burnt Orange */
+  color: #FFFFFF !important; /* White */
+}
+
+.btn:hover {
+  background-color: #003366 !important; /* Deep Blue */
+}
+
+/* Links */
+a {
+  color: #003366 !important; /* Deep Blue */
+}
+
+a:hover {
+  color: #CC5500 !important; /* Burnt Orange */
+}
+
+/* Header and Footer */
+header, footer {
+  background-color: #003366 !important; /* Deep Blue */
+  color: #F5F5DC !important; /* Warm Beige */
+}
+
+/* Dog Card */
+.dog-card {
+  border: 1px solid #9C9A6C !important; /* Sage Green */
+  background-color: #FFFFFF !important; /* White */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dog-card h2 {
+  color: #003366 !important; /* Deep Blue */
+}
+
+.dog-card p {
+  color: #333333 !important; /* Charcoal Gray */
 }
