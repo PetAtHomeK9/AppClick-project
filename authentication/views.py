@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404,redirect
 from .models import User
+from shop.models import Dog,SellerProfile,Order
 from .forms import SignupForm,LoginForm, ChangePasswordForm
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.decorators import login_required
@@ -22,7 +23,9 @@ def log_in(request):
                     return redirect('seller_dashboard')
                 else:
                     return redirect('buyer_dashboard')
+            print(form.errors)
             return redirect('index')
+       
         else:
                 form.add_error(None, 'Invalid Username or Password')
                 
@@ -42,7 +45,7 @@ def sign_up(request):
             password=form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('index')
+            return redirect('log_in')
         else:
             context = {
                 'form':form
@@ -62,22 +65,30 @@ def log_out(request):
 @login_required
 def profile(request):
     user= request.user
+    dogs= None
+    order=None
+    acc_balance=1000
+    seller_profile=None
+    if user.roles=='seller':
+        seller_profile= SellerProfile.objects.get(user=user)
+        dosgs=Dog.objects.filter(user=user)
+        sales=Order.object.filter(dog__user=user)
+        order= Order.objects.filter(buyer=user)
+        acc_balance=sum(sale.total_price for sale in sales)
+    
+    elif user.roles=='buyer':
+        order = Order.objects.filter(user=user)
+
     context={
-        'user':user
+        'user':user,
+        'seller_profile':seller_profile,
+        'order':order,
+        'acc_balance':acc_balance,
+        'dogs': dogs
     }
     return render(request, 'profile.html', context)
 
 class ChangePasswordView(PasswordChangeView):
     form_class= ChangePasswordForm
     template_name='change_password.html'
-    success_url='done/'
-
-@login_required
-def seller_dashboard(request):
-    
-    return render(request, 'seller.html')
-
-@login_required
-def buyer_dashboard(request):
-    
-    return render(request, 'buyer.html')
+    success_url='change-password/done/'

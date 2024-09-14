@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import log_in,sign_up,log_out,profile,ChangePasswordView,seller_dashboard,buyer_dashboard
+from .views import log_in,sign_up,log_out,profile,ChangePasswordView
 from django.contrib.auth.views import PasswordChangeDoneView
 
 
@@ -12,8 +12,7 @@ urlpatterns = [
     path('change-password/', ChangePasswordView.as_view(), name='change-password'),
     path('change-password/done/', PasswordChangeDoneView.as_view(template_name='password_changed.html'), name='password-changed'),
    
-    path('seller_dashboard/', seller_dashboard, name='seller_dasboard'),
-    path('buyer_dashboard/', buyer_dashboard, name='buyer_dashboard')
+
 ]
 
 

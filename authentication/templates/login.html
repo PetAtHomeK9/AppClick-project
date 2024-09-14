@@ -5,6 +5,20 @@
     <h2 class="auth-head">Login</h2>
     <form class="auth" method='post'>
         {% csrf_token %}
+        {% if form.errors%}
+        <div>
+            <ul>
+                {% for field, errors in form.errors.items %}
+                {% for error in errors%}
+                  <li>
+                      {{error}}
+                  </li>
+                {% endfor %}
+                {% endfor %}
+            </ul>      
+        </div>
+        {% endif %}
+        {{form.non_field_errors}}
         {{form}}
         <button type='submit'>Log in</button>
     </form>
