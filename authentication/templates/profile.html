@@ -18,6 +18,41 @@
     <a class='logout-btn' href='{% url "log_out" %}'><i class='fas fa-sign-out-alt'></i> Logout</a>
     <a class='logout-btn' href='{% url "change-password" %}'>Change Password</a>
     </div>
+    {%if seller_profile %}
+    <div>
+        <h3>Seller Profile</h3>
+        <p><strong>Name: </strong>  {{}} </p>
+        <p><strong>Contact: </strong> {{}}     </p>
+        <p><strong>Location: </strong>  {{}}    </p>
+        <p><strong>Bio: </strong>              </p>
 
+    </div>
+    <p>For sale</p>
+    {% for dog in dogs%}
+    <div>
+        <p><strong>Name:</strong>    {{}}        </p>
+        <p><strong>Breed:</strong>    {{}}       </p>
+        <p><strong>Age:</strong>    {{}}         </p>
+        <p><strong>Price:</strong>  {{}}          </p>
+        <p><strong>Location:</strong> {{}}                  </p>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+
+    {% if orders%}
+    <h3>Your Orders</h3>
+    {% for order in orders %}
+    <div>
+        <p><strong></strong>{{}} </p>
+        <p><strong></strong>{{}} </p>
+        <p><strong></strong>{{}} </p>
+        <p><strong></strong>{{}} </p>
+    
+    
+    
+    </div>
+    {% endfor %}
+    {%endif %}
 </body>
 </html>

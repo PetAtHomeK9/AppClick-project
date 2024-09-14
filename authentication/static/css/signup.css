@@ -1,16 +1,16 @@
 * {
     box-sizing: border-box;
-    margin: 0;
+    
+    
 }
 
 .header{
     text-align: center;
     color:#333 ;
     text-transform: capitalize;
-    margin-bottom: 20px;
-    font-weight: 100px;
+    margin: 0 0 20px 0;
+    font-weight: 800;
     font-size: 35px;
-    
 }
 
 .auth input[type='text'],
@@ -31,9 +31,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    width: 100%;
     transition: transform 0.3s ease;
     box-shadow:0 2px 5px rgba(0, 0, 0, 0.1);
+
+    max-width: 450px;
+    margin: auto;
+    
 }
 
 .auth ::placeholder{
@@ -66,7 +70,7 @@
     font-weight: bold;
     height: 40px;
 }
-.auth button[type='submit'] :hover{
+.auth button[type='submit']:hover{
     background-color: #007bffce;
 
 }
@@ -88,4 +92,11 @@
     font-weight: bold;
     margin-right: 10px;
     color: #343a40;
+}
+
+@media (max-width: 600px) {
+    .form-container {
+        padding: 15px;
+        box-shadow: none;
+    }
 }
