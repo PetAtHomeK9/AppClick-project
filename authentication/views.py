@@ -1,5 +1,4 @@
-from django.shortcuts import render, get_object_or_404,redirect
-from .models import User
+from django.shortcuts import render,redirect
 from shop.models import Dog,SellerProfile,Order
 from .forms import SignupForm,LoginForm, ChangePasswordForm
 from django.contrib.auth import login,authenticate,logout
@@ -19,12 +18,11 @@ def log_in(request):
             user = authenticate(request, username=username,password=password)
             if user != None:
                 login(request, user)
+                
                 if user.roles=='seller':
-                    return redirect('seller_dashboard')
+                    return redirect('index')
                 else:
-                    return redirect('buyer_dashboard')
-            print(form.errors)
-            return redirect('index')
+                    return redirect('index')
        
         else:
                 form.add_error(None, 'Invalid Username or Password')
@@ -62,6 +60,12 @@ def sign_up(request):
 def log_out(request):
     logout(request)
     return redirect('index')
+
+
+
+
+
+
 @login_required
 def profile(request):
     user= request.user
@@ -71,13 +75,13 @@ def profile(request):
     seller_profile=None
     if user.roles=='seller':
         seller_profile= SellerProfile.objects.get(user=user)
-        dosgs=Dog.objects.filter(user=user)
-        sales=Order.object.filter(dog__user=user)
+        dogs=Dog.objects.filter(user=user)
+        sales=Order.objects.filter(dog__user=user)
         order= Order.objects.filter(buyer=user)
         acc_balance=sum(sale.total_price for sale in sales)
     
     elif user.roles=='buyer':
-        order = Order.objects.filter(user=user)
+        order = Order.objects.filter(buyer=user)
 
     context={
         'user':user,

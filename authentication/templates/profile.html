@@ -21,20 +21,20 @@
     {%if seller_profile %}
     <div>
         <h3>Seller Profile</h3>
-        <p><strong>Name: </strong>  {{}} </p>
-        <p><strong>Contact: </strong> {{}}     </p>
-        <p><strong>Location: </strong>  {{}}    </p>
-        <p><strong>Bio: </strong>              </p>
+        <p><strong>Name: </strong>  {{seller_profile.name}} </p>
+        <p><strong>Contact: </strong> {{seller_profile.contact}}     </p>
+        <p><strong>Location: </strong>  {{seller_profile.location}}    </p>
+        <p><strong>Bio: </strong>  {{seller_profile.bio}}</p>
 
     </div>
     <p>For sale</p>
     {% for dog in dogs%}
     <div>
-        <p><strong>Name:</strong>    {{}}        </p>
-        <p><strong>Breed:</strong>    {{}}       </p>
-        <p><strong>Age:</strong>    {{}}         </p>
-        <p><strong>Price:</strong>  {{}}          </p>
-        <p><strong>Location:</strong> {{}}                  </p>
+        <p><strong>Name:</strong>    {{dog.name}}</p>
+        <p><strong>Breed:</strong>    {{dog.breed}} </p>
+        <p><strong>Age:</strong>    {{dog.age}}</p>
+        <p><strong>Price:</strong>  {{dog.Price}} </p>
+        <p><strong>Location:</strong> {{dog.location}} </p>
     </div>
     {% endfor %}
     {% endif %}
@@ -44,10 +44,10 @@
     <h3>Your Orders</h3>
     {% for order in orders %}
     <div>
-        <p><strong></strong>{{}} </p>
-        <p><strong></strong>{{}} </p>
-        <p><strong></strong>{{}} </p>
-        <p><strong></strong>{{}} </p>
+        <p><strong>Dog: </strong>{{order.dog}} </p>
+        <p><strong>Buyer: </strong>{{order.Buyer}} </p>
+        <p><strong>Location: </strong>{{order.location}} </p>
+        <p><strong>Status: </strong>{{order.status}} </p>
     
     
     
