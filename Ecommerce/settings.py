@@ -146,6 +146,5 @@ AUTH_USER_MODEL = "authentication.User"
 
 MEDIA_ROOT = BASE_DIR / "uploads"
 
-MEDIA_URL = ""
-
+MEDIA_URL = "/media/"
 
