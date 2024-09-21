@@ -18,7 +18,7 @@ def log_in(request):
             user = authenticate(request, username=username,password=password)
             if user != None:
                 login(request, user)
-                
+                return redirect("/")
                 if user.roles=='seller':
                     return redirect('index')
                 else:

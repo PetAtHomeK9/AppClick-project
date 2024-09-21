@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Dog, Order, SellerProfile
+from .forms import DogForm
 
 def index(request):
     dogs = Dog.objects.all()
@@ -60,3 +61,21 @@ def order_detail(request, order_id):
     order = get_object_or_404(Order, id=order_id)
     return render(request, 'order_detail.html', {'order': order})
 
+
+
+@login_required
+def sell_dog(request):
+    if not hasattr(request.user, 'sellerprofile'):
+        return redirect('home')  # Redirect if the user is not a seller
+    
+    if request.method == 'POST':
+        form = DogForm(request.POST)
+        if form.is_valid():
+            dog = form.save(commit=False)
+            dog.seller = request.user.sellerprofile  # Link the dog to the seller
+            dog.save()
+            return redirect('dog_list')  # Redirect to a page showing the list of dogs
+    else:
+        form = DogForm()
+    
+    return render(request, 'sell_dog.html', {'form': form})
