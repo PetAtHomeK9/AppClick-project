@@ -10,6 +10,7 @@
 <body>
     <div class='profile-card'>
       <h1 class='logo' >Welcome {{user.username}}<img src='{% static "img/mac_os.jpg" %}'></h1>
+      
     </div>
     <div class='profile-text'>
     <p><i class='fas fa-user fa-sm'></i> <strong>First name:</strong> {{user.first_name}} </p>
@@ -37,22 +38,41 @@
         <p><strong>Location:</strong> {{dog.location}} </p>
     </div>
     {% endfor %}
+   
+    <h3>Your Orders</h3>
+    {% for order in orders%}
+    <div>
+         <p><strong>Dogs Sold: </strong> {{order.dog.name}}</p>
+         <p><strong>Buyer: </strong> {{order.buyer.username}}</p>
+         <p><strong>Status: </strong> {{order.status}}</p>
+         <p><strong>Total price: </strong> {{order.total_price}}</p>
+         {%if order.status == 'PENDING' %}
+        <a href='{% url "status_delivered" order.id %}' class='btn'>Mark as delivered</a>
+        {% endif %}
+    </div>
+   
+    {% empty %}
+    <p>No order's yet...</p>
+    {% endfor %}
+    <a href='{% url "adding_dogs" %}' class='btn'>Add dog</a>
+    <a href='{% url "handle_listings" %}' class='btn'>Manage dogs</a>
     {% endif %}
 
-
-    {% if orders%}
+    {% if not seller_profile %}
     <h3>Your Orders</h3>
     {% for order in orders %}
     <div>
-        <p><strong>Dog: </strong>{{order.dog}} </p>
-        <p><strong>Buyer: </strong>{{order.Buyer}} </p>
-        <p><strong>Location: </strong>{{order.location}} </p>
+        <p><strong>Dog Purchased: </strong>{{order.dog.name}} </p>
         <p><strong>Status: </strong>{{order.status}} </p>
+        <p><strong>Total price: </strong> {{order.total_price}}</p>
     
     
     
     </div>
+    {% empty %}
+    <p> No order's been made yet...</p>
     {% endfor %}
+    <a href='{% url "find_dogs" %}' class='btn'>Browse Dogs</a>
     {%endif %}
 </body>
 </html>

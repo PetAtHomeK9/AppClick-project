@@ -26,10 +26,14 @@ class SellerProfile(models.Model):
 
 
 class Order(models.Model):
+    STATUS_CHOICES = (
+        ('PENDING', 'PENDING'),
+        ('DELIVERED', 'Delivered')
+    )
     dog = models.ForeignKey(Dog, on_delete=models.CASCADE)
     buyer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
-    status = models.CharField(max_length=10, default="PENDING")
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="PENDING")
 
 
 

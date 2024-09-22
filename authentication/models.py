@@ -11,4 +11,4 @@ class User(AbstractUser):
         ('seller','Seller'),
         ('buyer','Buyer')
     )
-    roles = models.CharField(max_length=10, choices=USER_OPTIONS, default='buyer')
+    role = models.CharField(max_length=10, choices=USER_OPTIONS, default='seller')
