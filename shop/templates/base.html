@@ -31,7 +31,7 @@
 </head> 
 <body>
     <header>
-      <nav>
+      
         <nav class="navbar navbar-expand-lg custom_nav-container">
           <a class="navbar-brand" href="{% url 'index' %}">
              
@@ -44,7 +44,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
                   <li class="nav-item active">
-                      <a class="nav-link" href="/">Paws & Play <span class="sr-only">(current)</span></a>
+                      <a class="btn btn-outline-success my-2 my-sm-0" href="/">Paws & Play <span class="sr-only">(current)</span></a>
                   </li>
               </ul>
               
@@ -57,12 +57,14 @@
                       <option value="Female">Female</option>
                   </select>
                   <input class="form-control mr-sm-2" type="number" name="age" placeholder="Max Age" aria-label="Max Age">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Find My Furry Friend</button>
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Furry Finder</button>
               </form>
       
               <div class="user_option">
                   <a href="{% url 'log_in' %}">
-                      <span>Paw In</span>
+                     {% if not user.is_authenticated %}
+                     <span class="Paw_in">Paw In</span>
+                     {% endif %}
                   </a>
                   <a href="{% url 'sign_up' %}">
                       {% if not user.is_authenticated %}
@@ -79,9 +81,7 @@
                   {% endif %}
               </div>
           </div>
-      
-      
-      </nav>
+        </nav>
     </header>
 
     <main>
