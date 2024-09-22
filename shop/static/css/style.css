@@ -1073,11 +1073,19 @@ nav ul li a {
 
 .navbar a {
   color: #F5F5DC; /* Warm Beige */
+  text-decoration: none; /* Remove underline */
 }
 
 .navbar a:hover {
   color: #CC5500; /* Burnt Orange */
+  text-decoration: underline; /* Add underline on hover for emphasis */
 }
+
+.nav-item.active .nav-link {
+  background-color: #00509E; /* Slightly lighter blue for active items */
+  color: #F5F5DC; /* Keep the text color consistent */
+}
+
 
 
 
@@ -1154,4 +1162,189 @@ header, footer {
 
 .dog-card p {
   color: #333333 !important; /* Charcoal Gray */
+}
+
+
+:root {
+  --background-color: #F5F5DC; /* Soft Beige */
+  --primary-color: #8B4513; /* Saddle Brown */
+  --secondary-color: #6B8E23; /* Olive Green */
+  --highlight-color: #DAA520; /* Golden Yellow */
+  --text-color: #333333; /* Dark Charcoal */
+  --button-color: #D2691E; /* Terracotta */
+}
+
+/* Background */
+body {
+  background-color: var(--background-color) !important;
+  color: var(--text-color) !important;
+}
+
+/* Buttons */
+button, .btn {
+  background-color: var(--button-color) !important;
+  color: white !important;
+  border-radius: 5px !important;
+}
+
+/* Headings and important text */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-color) !important;
+}
+
+/* Links */
+a {
+  color: var(--highlight-color) !important;
+}
+
+a:hover {
+  color: var(--secondary-color) !important;
+}
+
+/* Call to Action Highlights */
+.cta {
+  background-color: var(--highlight-color) !important;
+  color: white !important;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+
+
+/* Style the form container */
+.sell-dog-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #003366; /* Deep Blue background for the form */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #F5F5DC; /* Warm Beige text color */
+}
+
+/* Style the form elements */
+.sell-dog-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sell-dog-container label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #F5F5DC; /* Warm Beige */
+}
+
+/* Style the input fields */
+.sell-dog-container input[type="text"],
+.sell-dog-container input[type="number"],
+.sell-dog-container textarea,
+.sell-dog-container input[type="file"],
+.sell-dog-container select {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #F5F5DC; /* Light beige input background */
+  color: #003366; /* Deep Blue text */
+}
+
+/* Style the button */
+.sell-dog-container button {
+  background-color: #CC5500; /* Burnt Orange button */
+  color: #F5F5DC; /* Warm Beige text */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.sell-dog-container button:hover {
+  background-color: #F5F5DC; /* Warm Beige on hover */
+  color: #003366; /* Deep Blue text on hover */
+}
+
+/* Add a header style */
+.sell-dog-container h1 {
+  text-align: center;
+  font-size: 24px;
+  color: #F5F5DC; /* Warm Beige */
+  margin-bottom: 20px;
+}
+.profile {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #003366; /* Deep Blue */
+  border-radius: 10px;
+  background-color: #F5F5DC; /* Warm Beige */
+  color: #003366; /* Deep Blue */
+}
+
+.profile h1 {
+  text-align: center;
+  color: #CC5500; /* Burnt Orange */
+}
+
+.profile p {
+  font-size: 1.1em;
+  margin: 10px 0;
+}
+
+.profile img {
+  display: block;
+  margin: 20px auto;
+  border-radius: 50%;
+  max-width: 150px; /* Adjust size as needed */
+}
+
+
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F5F5DC; /* Light background for readability */
+  color: #003366; /* Deep Blue text color */
+  margin: 0;
+  padding: 20px;
+}
+
+/* Container for the messages */
+.alert {
+  border: 1px solid #CC5500; /* Burnt Orange border */
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+/* Alert types */
+.alert-success {
+  background-color: #E0F7E0; /* Light green background */
+  color: #005600; /* Dark green text */
+}
+
+.alert-danger {
+  background-color: #F8D7DA; /* Light red background */
+  color: #721c24; /* Dark red text */
+}
+
+/* Headings */
+h1, h2 {
+  color: #003366; /* Deep Blue */
+}
+
+/* Button styles */
+.btn {
+  background-color: #CC5500; /* Burnt Orange */
+  color: #F5F5DC; /* Warm Beige */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn:hover {
+  background-color: #F5F5DC; /* Warm Beige */
+  color: #003366; /* Deep Blue */
 }

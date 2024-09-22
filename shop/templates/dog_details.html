@@ -5,7 +5,7 @@
     <h1>{{ dog.name }}</h1>
     <img src="{{ dog.display_img.url }}" alt="{{ dog.name }}" class="dog-image">
     <p><strong>Breed:</strong> {{ dog.breed }}</p>
-    <p><strong>Age:</strong> {{ dog.age }} years</p>
+    <p><strong>Age:</strong> {{ dog.age }} months</p>
     <p><strong>Gender:</strong> {{ dog.gender }}</p>
     <p><strong>Description:</strong> {{ dog.description }}</p>
     <p><strong>Price:</strong> ${{ dog.price }}</p>
@@ -14,7 +14,8 @@
 
     <!-- Add a Buy Now button -->
     {% if dog.availability %}
-        <a href="{% url 'place_order' dog.id %}" class="btn btn-primary">Adopt Me</a>
+    <a href="{% url 'place_order' dog_id=dog.id %}" class="btn btn-primary">Adopt Me</a>
+
     {% else %}
         <p>This dog is no longer available.</p>
     {% endif %}
