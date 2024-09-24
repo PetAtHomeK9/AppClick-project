@@ -47,7 +47,7 @@ def sign_up(request):
                 SellerProfile.objects.create(user=user)
                 
 
-            return redirect('log_in')
+            return redirect('index')
         else:
             context = {
                 'form':form
