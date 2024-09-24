@@ -34,14 +34,33 @@
     display: inline-block;
     padding: 10px 20px;
     color: #fff;
-    background-color: #f44336;
+    background-color: #007bffce;
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
 
 }
+.btn{
+
+    margin-top: 20px;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #007bffce;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+
+
+}
+
+.btn :hover{
+    background-color: #007bffce;
+}
+
+
 .logout-btn:hover{
-    background-color: #d32f2f;
+    background-color: #007bffce;
 }
 
 @media (max-width: 600px) {
