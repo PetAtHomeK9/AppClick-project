@@ -63,7 +63,7 @@
                     <div class="box">
                         <a href="{% url 'dog_details' dog.id %}">
                             <div class="img-box">
-                                <img src="{{ dog.display_img }}" alt="{{ dog.name }}">
+                                <img src="{{ dog.display_img.url }}" alt="{{ dog.name }}">
                             </div>
                             <div class="detail-box">
                                 <h6>Name: {{ dog.name }}</h6>
@@ -401,7 +401,7 @@
                                     Default model text
                                 </h6>
                             </div>
-                            <i class="fa fa-quote-left" aria-hidden="true"></i>
+                          
                         </div>
                         <p>
                             After going through a rough patch and feeling heartbroken, I was searching for something to bring joy back into my life. That’s when I met Max, a lovable Labrador from PetAtHome K9. Max has been a true lifesaver. His unconditional love and playful spirit have been the best therapy for me. Every wag of his tail and every joyful bark reminds me that there is still happiness and love in the world. The companionship and comfort he provides have been beyond anything I could have imagined. Thank you, PetAtHome K9, for helping me find my best friend and for giving Max a wonderful home. He has truly been a blessing in my life.
@@ -429,8 +429,7 @@
                         At PetAtHome K9, we believe that every dog has a special place in the heart of their forever family. Founded on the love and admiration for our furry friends, our mission is to connect dogs with families where they can thrive and bring joy.
                     </p>
                 </div>
-                <div class="col-md-6 col-lg-3">
-                </div>
+                
                 <div class="col-md-6 col-lg-3">
                 <h6>
                     OUR STORY
@@ -438,6 +437,14 @@
                 <p>
                     The journey of PetAtHome K9 began with a simple idea: to provide a loving and supportive environment for dogs and their new families. We understand the unique bond between humans and dogs—how a wagging tail can lift spirits and a soft nuzzle can heal a broken heart.
                 </p>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h6>
+                        OUR COMMITMENT
+                    </h6>
+                    <p>
+                        At PetAtHome K9, we’re dedicated to more than just finding homes for dogs—we’re building lifelong friendships. Our team ensures each dog is treated with compassion, and every adoption marks the beginning of a journey filled with love and trust. We believe every dog deserves a safe, happy home, and we’re here to make that possible.
+                    </p>
                 </div>
                 <div class="col-md-6 col-lg-3">
                 <h6>

@@ -148,3 +148,4 @@ MEDIA_ROOT = BASE_DIR / "uploads"
 
 MEDIA_URL = "/media/"
 
+LOGIN_URL = 'log_in'  # Name of your login view, or '/auth/login/' if you prefer to use a hardcoded URL

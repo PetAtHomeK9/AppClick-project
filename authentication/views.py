@@ -19,7 +19,9 @@ def log_in(request):
             if user != None:
                 login(request, user)
                 
-                if user.role=='seller':
+                if user.role=='seller'
+               
+          
                     return redirect('index')
                 else:
                     return redirect('index')

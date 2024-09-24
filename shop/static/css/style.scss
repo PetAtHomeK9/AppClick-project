@@ -157,6 +157,10 @@ a:focus {
   box-shadow: none;
 }
 
+.navbar a {
+  color: #383813 !important;
+}
+
 .navbar-brand {
   margin: 15px 0;
   padding: 0;
@@ -250,15 +254,36 @@ a:focus {
   align-items: center;
   margin-left: 25px;
 
+
   a {
     margin-right: 25px;
-    color: $black;
-
+    color: red; /* Set link color to red */
+    
     span {
       margin-left: 5px;
+      color: red; /* Set span color to red */
     }
   }
+  .user_option a {
+    margin-right: 25px !important;
+    color: #909009 !important; /* Normal color */
+  }
+  
+  .user_option a:hover {
+    color: #CC5500 !important; /* Hover color */
+  }
+  
+  .user_option a.active {
+    color: red !important; /* Active color */
+  }
+  
+  .user_option a:visited {
+    color: #F5F5DC !important; /* Visited color */
+  }
+  
 }
+
+
 
 /*end header section*/
 
