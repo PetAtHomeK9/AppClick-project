@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+{% load static%}
+<meta name='viewport' content='width=device-width, initialscale=1.0'>
+<title>Add a dog</title>
+<link rel='stylesheet' href='{% static "css/dogs.css" %}'>
+</head>
+<body>
+<div class='form-container'>
+    <h1>Add Dog Listing<h1>
+    {% if form.errors %}
+        <div class='error-msg'>
+           <p>There were errors in your:</p>
+           {% for field in form%}
+              {%if field.errors %}
+              <li>{{field.label}}: {{field.errors|striptags}}</li>
+              {% endif %}
+           {% endfor %}
+        </div>
+    {% endif %}
+    <form method='post' enctype='multipart/form-data'>
+    {% csrf_token %}
+         <div class='form-field'>
+            {{form.name.label_tag}}
+            {{form.name}}
+         </div>
+         <div class='form-field'>
+            {{form.breed.label_tag}}
+            {{form.breed}}
+         </div>
+         <div class='form-field'>
+            {{form.display_img.label_tag}}
+            {{form.display_img}}
+         </div>
+         <div class='form-field'>
+            {{form.age.label_tag}}
+            {{form.age}}
+         </div>
+         <div class='form-field'>
+            {{form.price.label_tag}}
+            {{form.price}}
+         </div>
+         <div class='form-field'>
+            {{form.location.label_tag}}
+            {{form.location}}
+         </div>
+         <div class='form-field'>
+            {{form.gender.label_tag}}
+            {{form.gender}}
+         </div>
+         <div class='form-field'>
+            {{form.description.label_tag}}
+            {{form.description}}
+         </div>
+        <button type='submit' class='btn'>Add Dog<button>
+    </form>
+    <a href='{% url "profile" %}'> Back to profile</a>
+
+
+
+         
+</div>
+</body>
+</html>

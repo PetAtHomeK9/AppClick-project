@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from shop.models import Dog,SellerProfile,Order
-from .forms import SignupForm,LoginForm, ChangePasswordForm
+from .forms import SignupForm,LoginForm, ChangePasswordForm,DogForm
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView
@@ -19,7 +19,7 @@ def log_in(request):
             if user != None:
                 login(request, user)
                 
-                if user.role=='seller'
+                if user.role=='seller':
                
           
                     return redirect('index')
@@ -97,7 +97,7 @@ def profile(request):
         'acc_balance':acc_balance,
         'dogs': dogs
     }
-    return render(request, 'profile.html', context)
+    return render(request, 'authentication/profile.html', context)
 
 class ChangePasswordView(PasswordChangeView):
     form_class= ChangePasswordForm
@@ -120,9 +120,20 @@ def status_delivered(request, order_id):
     
 
 def add_dogs(request):
-    if request.method=='POST':
-        pass
-    return render(request, 'adding_dogs.html')
+    if request.user.role=='seller':
+       if request.method=='POST':
+           form = DogForm(request.POST, request.FILES)
+           if form.is_valid():
+               dog = form.save(commit=False)
+               dog.user = request.user
+               dog.save()
+               return redirect('profile')
+       else:
+               form = DogForm()
+    
+       return render(request, 'authentication/adding_dogs.html', {'form':form})
+    else:
+        return redirect('profile')
 
 
 @login_required
