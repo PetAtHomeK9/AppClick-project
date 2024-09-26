@@ -16,6 +16,11 @@ class Dog(models.Model):
     date_posted = models.DateTimeField(auto_now_add=True)
 
 
+
+    def __str__(self):
+        return f'{self.name}'
+
+
 class SellerProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)

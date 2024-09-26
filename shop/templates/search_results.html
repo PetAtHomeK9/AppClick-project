@@ -1,24 +1,26 @@
 {% extends "base.html" %}
-
+{% load static%}
 {% block content %}
-
+<link rel="stylesheet" href="{% static 'css/browse.css' %}"/>
 <h1>Sniffing Out the Best Matches</h1>
 
 {% if dogs %}
+   <div class='browse-container'>
     <ul>
         {% for dog in dogs %}
-            <li>
+            <div class='each-dog'>
                 <a href="{% url 'dog_details' dog.id %}">
                     <img src="{{ dog.display_img.url }}" alt="{{ dog.name }}" class="dog-thumbnail">
                     <h2>{{ dog.name }}</h2>
                     <p><strong>Breed:</strong> {{ dog.breed }}</p>
                     <p><strong>Sex:</strong> {{ dog.gender }}</p>
-                    <p><strong>Age:</strong> {{ dog.age }}</p>
+                    <p><strong>Age:</strong> {{ dog.age }} months</p>
                     <p><strong>Price:</strong> ${{ dog.price }}</p>
                 </a>
-            </li>
+            </div>
         {% endfor %}
     </ul>
+    </div>
 {% else %}
     <p>No paws matched your search. Try a different bark!</p>
 {% endif %}

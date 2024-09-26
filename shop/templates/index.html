@@ -3,6 +3,7 @@
 
 {% block headers %}
 <link href="{% static 'css/custom.css' %}" rel="stylesheet" />
+<link rel="stylesheet" href="{% static 'css/browse.css' %}"/>
 {% endblock %}
 
 {% block content %}
@@ -56,10 +57,9 @@
             <div class="heading_container heading_center">
                 <h2>Fresh Fetches Just In!</h2>
             </div>
-            <div class="row">
+            <div class="browse-container">
                 {% for dog in dogs %}
-                    <div class="col-sm-6 col-md-4 col-lg-3">
-                        <div class="box">
+                    <div class="each-dog">
                             <a href="{% url 'dog_details' dog.id %}">
                                 <div class="img-box">
                                     <img src="{{ dog.display_img.url }}" alt="{{ dog.name }}">
@@ -70,7 +70,6 @@
                                     <h6>Price: <span>${{ dog.price }}</span></h6>
                                 </div>
                             </a>
-                        </div>
                     </div>
                 {% endfor %}
             </div>

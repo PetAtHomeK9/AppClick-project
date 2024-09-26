@@ -33,8 +33,11 @@
     </table>
     {% else %}
           <p>You haven't listed any Dogs for Sale yet...</p>
-          <a href='{% url "adding_dogs" %}' class='btn'>Add Dog</a>
+          <a href='{% url "adding_dogs" %}' class='btn-b'>Add Dog</a>
     {% endif %}
+    <div class='btn-back'>
+    <a href='{% url "profile" %}' class='btn-b'>Back</a>
+    </div>
 
 
 

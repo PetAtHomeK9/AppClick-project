@@ -45,7 +45,7 @@ h1 {
 }
 
 /* Information about the dog */
-.each-dog h3 {
+.each-dog h6 {
     margin: 0;
     font-size: 1.5rem;
     color: #333;

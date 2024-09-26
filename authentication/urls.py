@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import log_in,sign_up,log_out,profile,ChangePasswordView,status_delivered,add_dogs,browse_dogs,handle_listings,update_profile,edit_dog,delete_dog
+from .views import log_in,sign_up,log_out,profile,ChangePasswordView,status_delivered,add_dogs,browse_dogs,handle_listings,update_profile,edit_dog,delete_dog,dog_detail
 from django.contrib.auth.views import PasswordChangeDoneView
 
 
@@ -17,7 +17,8 @@ urlpatterns = [
     path('handle_listings/browse/', browse_dogs, name='browse_dogs'),
     path('add_profile/', update_profile, name='add_profile'),
     path('handle_listings/edit/<int:dog_id>/', edit_dog, name='edit_dog'),
-    path('handle_listings/delete/<int:dog_id>/',delete_dog, name='delete_dog')
+    path('handle_listings/delete/<int:dog_id>/',delete_dog, name='delete_dog'),
+    path('dog_details/<int:dog_id>/',dog_detail, name='dog_details'),
 
 ]
 
