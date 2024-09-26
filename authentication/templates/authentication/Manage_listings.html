@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang='en'>
+{% load static %}
+<head>
+<link rel='stylesheet' href='{% static "css/manage.css" %}'>
+</head>
+<body>
+<div class='manage-container'>
+    <h1>Your Dog Listings</h1>
+    {% if dogs %}
+    <table class='table'>
+          <tr>
+             <th>Name</th>
+             <th>Age</th>
+             <th>Price</th>
+             <th>Breed</th>
+             <th>Location</th>
+             <th>Actions</th>
+          </tr>
+          {% for dog in dogs%}
+          <tr>
+             <td>{{dog.name}}</td>
+             <td>{{dog.age}}</td>
+             <td>${{dog.price}}</td>
+             <td>{{dog.breed}}</td>
+             <td>{{dog.location}}</td>
+             <td>
+                <a href='{% url "edit_dog" dog.id%}' class='btn'>Edit dog</a>
+                <a href='{% url "delete_dog" dog.id%}' class='btn'>Delete dog</a>
+             </td>
+          </tr>
+          {% endfor %}
+    </table>
+    {% else %}
+          <p>You haven't listed any Dogs for Sale yet...</p>
+          <a href='{% url "adding_dogs" %}' class='btn'>Add Dog</a>
+    {% endif %}
+
+
+
+
+
+
+
+</form>
+</div>
+
+</body>
+</html>

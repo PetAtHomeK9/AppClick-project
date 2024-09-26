@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang='en'>
+{% load static %}
+<head>
+<link rel='stylesheet' href='{% static "css/edit.css" %}'>
+</head>
+<body>
+<div>
+<form method='post' enctype='multipart/form-data'>
+
+    {% csrf_token %}
+         <div class='form-field'>
+            {{form.name.label_tag}}
+            {{form.name}}
+         </div>
+         <div class='form-field'>
+            {{form.breed.label_tag}}
+            {{form.breed}}
+         </div>
+         <div class='file-input'>
+            {{form.display_img.label_tag}}
+            {{form.display_img}}
+         </div>
+         <div class='form-field'>
+            {{form.age.label_tag}}
+            {{form.age}}
+         </div>
+         <div class='form-field'>
+            {{form.price.label_tag}}
+            {{form.price}}
+         </div>
+         <div class='form-field'>
+            {{form.location.label_tag}}
+            {{form.location}}
+         </div>
+         <div class='form-field'>
+            {{form.gender.label_tag}}
+            {{form.gender}}
+         </div>
+         <div class='form-field'>
+            {{form.description.label_tag}}
+            {{form.description}}
+         </div>
+         <div class='link-container'>
+               <button type='submit' class='btn'>Add Dog</button>      
+         </div>
+         <div class='back-link'>
+               <a href='{% url "profile" %}' class='back-link'> Back to profile</a>
+         </div>
+
+    </form>
+
+</div>
+</body>
+</html>

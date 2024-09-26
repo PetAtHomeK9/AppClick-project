@@ -99,17 +99,6 @@
     margin-right: 10px;
     color: #343a40;
 }
-.file-input {
-    padding: 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
-    width: 100%;
-    cursor: pointer;
-    display: block;
-    margin-bottom: 1rem;
-}
-
 
 
 @media (max-width: 600px) {
