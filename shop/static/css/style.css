@@ -1072,7 +1072,7 @@ nav ul li a {
 }
 
 .navbar a {
-  color: #F5F5DC; /* Warm Beige */
+  color: black; /* Warm Beige */
   text-decoration: none; /* Remove underline */
 }
 
@@ -1102,7 +1102,7 @@ body {
 }
 
 .navbar a {
-  color: #F5F5DC !important; /* Warm Beige */
+  color: black !important; /* Warm Beige */
 }
 
 .navbar a:hover {
@@ -1347,4 +1347,9 @@ h1, h2 {
 .btn:hover {
   background-color: #F5F5DC; /* Warm Beige */
   color: #003366; /* Deep Blue */
+}
+
+
+.navbar a {
+  color: black;
 }

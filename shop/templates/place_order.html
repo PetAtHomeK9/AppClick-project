@@ -9,7 +9,18 @@
 
     <form method="post" action="{% url 'place_order' dog.id %}">
         {% csrf_token %}
-        <!-- Include any fields you want in the form, like name, address, etc. -->
+        
+        <label for="delivery_address">Delivery Address:</label>
+        <textarea id="delivery_address" name="delivery_address" rows="4" cols="50" required></textarea>
+        <br><br>
+
+        <label for="payment_method">Payment Method:</label>
+        <select id="payment_method" name="payment_method" required>
+            <option value="balance">Account Balance</option>
+            <!-- Add more payment options if needed -->
+        </select>
+        <br><br>
+
         <button type="submit" class="btn btn-primary">Paw-sitive Purchase</button>
     </form>
 </div>

@@ -52,7 +52,9 @@ def place_order(request, dog_id):
             order = Order.objects.create(
                 dog=dog,
                 buyer=request.user,
-                total_price=dog.price
+                total_price=dog.price,
+                delivery_address=request.POST.get('delivery_address'),
+                payment_method=request.POST.get('payment_method')
             )
             # Deduct the amount from user's balance
             request.user.account_balance -= dog.price
@@ -66,7 +68,7 @@ def place_order(request, dog_id):
             return redirect('order_details', order_id=order.id)
         else:
             # Handle insufficient balance
-            return render(request, 'insufficient_balance.html')  # Create this template to inform users
+            return render(request, 'insufficient_balance.html') 
 
     return render(request, 'place_order.html', {'dog': dog})
 
@@ -79,35 +81,3 @@ def order_detail(request, order_id):
 
 
 
-
-@login_required
-def sell_dog(request):
-    # Check if the logged-in user is a seller
-    if request.user.roles != 'seller':
-        return redirect('home')  # Redirect to home if not a seller
-    
-    if request.method == 'POST':
-        form = DogForm(request.POST, request.FILES)  # Include file uploads for dog images
-        if form.is_valid():
-            dog = form.save(commit=False)
-            dog.user = request.user  # Link the dog to the user posting it
-            dog.save()
-            return redirect('dog_list')  # Redirect to a list showing all posted dogs
-    else:
-        form = DogForm()
-
-    return render(request, 'sell_dog.html', {'form': form})
-
-
-
-
-@login_required
-def profile_view(request):
-    user = request.user
-    seller_profile = getattr(user, 'sellerprofile', None)  # Get seller profile if it exists
-    context = {
-        'user': user,
-        'seller_profile': seller_profile,
-        'account_balance': user.account_balance,
-    }
-    return render(request, 'profile.html', context)
