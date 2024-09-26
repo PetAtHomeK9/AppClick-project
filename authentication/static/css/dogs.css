@@ -51,10 +51,19 @@ select {
     font-size: 1rem;
     transition: border-color 0.3s;
 }
-
+.file-input {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+    cursor: pointer;
+    display: block;
+    margin-bottom: 1rem;
+}
 
 textarea {
-    resize: vertical
+    resize: none;
 
 }
 
@@ -78,23 +87,42 @@ textarea {
     cursor: pointer;
     font-size: 1rem;
     width: 50%;
-    margin-left: 20px;
     
 }
 
 .btn:hover {
     background-color: #357ABD;
 }
-
-
-a {
-    display: inline-block;
-    text-align: center;
+.link-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;  /* Add some space between button and link */
     margin-top: 1rem;
+}
+
+.back-link {
+    display: flex;
+    justify-content: center;
+    text-align: center;
     color: #4A90E2;
     text-decoration: none;
+    margin-top: 10px;
 }
 
-a:hover {
+.back-link:hover {
     text-decoration: underline;
 }
+.success-msg {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.success-msg i {
+    margin-right: 10px;  /* Adds space between the icon and the message */
+    color: #28a745;      /* Optional: Add color to the icon */
+}
+

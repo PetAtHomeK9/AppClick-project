@@ -1,6 +1,6 @@
 from django import forms
 from .models import User
-from shop.models import Dog
+from shop.models import Dog,SellerProfile
 from django.contrib.auth.forms import UserCreationForm,PasswordChangeForm
 
 class SignupForm(UserCreationForm):
@@ -22,21 +22,32 @@ class SignupForm(UserCreationForm):
     password2=forms.CharField(min_length=8,required=True,
               widget=forms.PasswordInput({'placeholder':'Confirm Password'})
               )
-    phone= forms.IntegerField(required=False, widget=forms.TextInput({'placeholder':'phone'}))
+    profile_img=forms.FileField(required=False)
     ROLE_OPTIONS= (
         ('seller','Seller'),
         ('buyer','Buyer')   
     )
 
     role = forms.ChoiceField(choices=ROLE_OPTIONS, widget=forms.RadioSelect)
-
-
-
-
-
     class Meta:
         model= User
-        fields= ('first_name','last_name','email','username','password1','password2','phone','role')
+        fields = ['first_name','last_name','email','username','password1','password2','profile_img','role']
+
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model= SellerProfile
+        fields= ['contact','bio','profile_picture','location']
+        widgets={
+            'contact':forms.TextInput({'placeholder':'phone:'}),
+            'bio':forms.TextInput({'placeholder':'Bio:'}),
+            'profile_picture':forms.FileInput(),
+            'location':forms.TextInput({'placeholder':'Enter a valid Address:'})
+        }
+
+
+
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=20, label=None, required=True, widget=forms.TextInput({"placeholder" : "Enter your username"}))
@@ -59,6 +70,6 @@ class DogForm(forms.ModelForm):
             'location':forms.TextInput({'placeholder':"Enter dog's location:"}),
             'gender':forms.Select({'placeholder':"Select gender:"}),
             'description':forms.Textarea({'placeholder':"Enter dog's description:"}),
-            'display_img':forms.ClearableFileInput({'placeholder':"Select dog's image:"}),
+            'display_img':forms.FileInput(),
             'breed':forms.TextInput({'placeholder':"Enter dog's breed:"})
         }

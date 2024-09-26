@@ -9,7 +9,7 @@ class Dog(models.Model):
     age = models.IntegerField()
     gender = models.CharField(max_length=10, choices=[('Male', 'Male'), ('Female', 'Female')])
     description = models.TextField()
-    display_img = models.FileField(upload_to="dog_display_img")
+    display_img = models.ImageField(upload_to="dog_display_img", null=True, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     location = models.CharField(max_length=100)
     availability = models.BooleanField(default=True)

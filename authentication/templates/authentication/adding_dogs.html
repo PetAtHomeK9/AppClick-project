@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class='form-container'>
-    <h1>Add Dog Listing<h1>
+    <h1>Add Dog Listing</h1>
     {% if form.errors %}
         <div class='error-msg'>
            <p>There were errors in your:</p>
@@ -29,7 +29,7 @@
             {{form.breed.label_tag}}
             {{form.breed}}
          </div>
-         <div class='form-field'>
+         <div class='file-input'>
             {{form.display_img.label_tag}}
             {{form.display_img}}
          </div>
@@ -53,10 +53,14 @@
             {{form.description.label_tag}}
             {{form.description}}
          </div>
-        <button type='submit' class='btn'>Add Dog<button>
-    </form>
-    <a href='{% url "profile" %}'> Back to profile</a>
+         <div class='link-container'>
+               <button type='submit' class='btn'>Add Dog</button>      
+         </div>
+         <div class='back-link'>
+               <a href='{% url "profile" %}' class='back-link'> Back to profile</a>
+         </div>
 
+    </form>
 
 
          
