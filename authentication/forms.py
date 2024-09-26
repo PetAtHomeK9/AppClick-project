@@ -22,7 +22,7 @@ class SignupForm(UserCreationForm):
     password2=forms.CharField(min_length=8,required=True,
               widget=forms.PasswordInput({'placeholder':'Confirm Password'})
               )
-    profile_img=forms.FileField(required=False)
+ 
     ROLE_OPTIONS= (
         ('seller','Seller'),
         ('buyer','Buyer')   
@@ -31,7 +31,8 @@ class SignupForm(UserCreationForm):
     role = forms.ChoiceField(choices=ROLE_OPTIONS, widget=forms.RadioSelect)
     class Meta:
         model= User
-        fields = ['first_name','last_name','email','username','password1','password2','profile_img','role']
+        fields = ['first_name','last_name','email','username','password1','password2','role']
+
 
 
 

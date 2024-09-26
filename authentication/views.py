@@ -38,9 +38,13 @@ def log_in(request):
     
 def sign_up(request):
     if request.method == 'POST':
-        form = SignupForm(request.POST)
+        form = SignupForm(request.POST, request.FILES)
         if form.is_valid():
-            user = form.save()
+            user = form.save(commit=False)
+            if 'profile_img' in request.FILES:
+                user.profile_img=request.FILES['profile_img']
+            user.save()
+            
             username=form.cleaned_data.get('username')
             password=form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
@@ -127,7 +131,7 @@ def add_dogs(request):
                dog = form.save(commit=False)
                dog.user = request.user
                dog.save()
-               return redirect('profile')
+               return redirect('handle_listings')
        else:
                form = DogForm()
     
@@ -142,16 +146,16 @@ def handle_listings(request):
     context={
         'dogs':dogs
     }
-    return render(request, 'handle_listings.html', context)
+    return render(request, 'authentication/Manage_listings.html', context)
 
 def browse_dogs(request):
     dogs= Dog.objects.filter(availability=True)
     context={
         'dogs':dogs
     }
-    return render(request, 'browsing_dogs.html', context)
+    return render(request, 'authentication/browse_dogs.html', context)
 
-def add_profile(request):
+def update_profile(request):
     user=request.user
     message= None
 
@@ -177,4 +181,38 @@ def add_profile(request):
        return render(request, 'authentication/seller_profile.html', context)
     return redirect('profile')
 
+def edit_dog(request, dog_id):
+    dog= get_object_or_404(Dog, id=dog_id, user=request.user)
+    if request.method=='POST':
+        form= DogForm(request.POST, request.FILES, instance=dog)
+        if form.is_valid():
+            form.save()       
+            return redirect('handle_listings')
+        
+        else:
 
+            context={
+            'form':form,
+            'dog':dog
+        }
+
+    else:
+        form=DogForm(instance=dog)
+        context={
+            'form':form,
+            'dog':dog
+        }      
+
+    return render(request, 'authentication/edit_dogs.html', context)    
+
+def delete_dog(request, dog_id):
+    dog = get_object_or_404(Dog, id=dog_id, user=request.user)
+    if request.method=='POST':
+        dog.delete()
+        return redirect('handle_listings')
+    return render(request, 'authentication/delete_dogs.html', {'dog':dog})
+
+def dog_detail(request, dog_id):
+    dog = get_object_or_404(Dog, id=dog_id)
+
+    return render(request, 'authentication/dog_details.html',{'dog':dog})

@@ -9,16 +9,17 @@
 </head>
 <body>
 
-    <div class='profile-card'>
-      <h1 class='logo' >Welcome {{user.username}}</h1>
-      {%if user.profile_img%}
-         <div class='profile-pic-container'>
-            <img src='{{ user.profile_img.url }}' alt='profile image'>
-         </div>
-      {% else %}
-         <p>No profile picture uploaded</p>
-      {% endif %}
+ <div class='profile-card'>
+    <h1 class='logo'>Welcome {{ user.username }}</h1>
+    <div class='profile-pic-container'>
+        {% if user.profile.profile_img %}
+            <img src="{{ user.profile.profile_img.url }}" alt="Profile Image">
+        {% else %}
+            <img class ='logo-img' src="{% static 'img/mac_os.jpg' %}" alt="Default Profile Image">
+        {% endif %}
     </div>
+</div>
+
     <div class='profile-text'>
     <p><i class='fas fa-user fa-sm'></i> <strong>First name:</strong> {{user.first_name}} </p>
     <p><i class='fas fa-user fa-sm'></i> <strong>Last name:</strong> {{user.last_name}} </p>
@@ -34,7 +35,7 @@
         <p><strong>Location: </strong>  {{seller_profile.location}}    </p>
         <p><strong>Bio: </strong>  {{seller_profile.bio}}</p>
         <p><strong>Balance:</strong> ${{user.account_balance}}</p>
-        <a class='btn' href='{% url "add_profile" %}'> <i class='fas fa user-circle'></i>Add Info</a>
+        <a class='btn' href='{% url "add_profile" %}'> <i class='fas fa user-circle'></i>Update Profile</a>
 
     </div>
     <p>For sale</p>
@@ -81,7 +82,11 @@
     {% empty %}
     <p> No order's been made yet...</p>
     {% endfor %}
-    <a href='{% url "find_dogs" %}' class='btn'>Browse Dogs</a>
+    {% if order.dog %}
+    <a href='{% url "browse_dogs" order.dog.id %}' class='btn'>Browse Dogs</a>
+    {% else %}
+    <p>No dogs Available</p>
+    {% endif %}
     {%endif %}
     
 </body>

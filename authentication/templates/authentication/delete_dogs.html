@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+<link rel='stylesheet' href='{% static "css/edit.css" %}'>
+{% block content %}
+<div>
+   <h2>Are you sure you want to delete {{dog.name}}</h2>
+   <form method='POST'>
+   {% csrf_token %}
+   <button class='btn' type='submit'>Delete</button>
+   <a href='{% url "handle_listings" %}' class='btn'>Cancel</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</form>
+</div>
+{% endblock  %}
