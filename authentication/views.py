@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from shop.models import Dog,SellerProfile,Order
-from .forms import SignupForm,LoginForm, ChangePasswordForm,DogForm
+from .forms import SignupForm,LoginForm, ChangePasswordForm,DogForm,ProfileForm
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView
@@ -150,3 +150,31 @@ def browse_dogs(request):
         'dogs':dogs
     }
     return render(request, 'browsing_dogs.html', context)
+
+def add_profile(request):
+    user=request.user
+    message= None
+
+    if request.user.role=='seller':
+       seller=SellerProfile.objects.filter(user=user).first()
+       if request.method=='POST':
+      
+           form = ProfileForm(request.POST, request.FILES, instance=seller)
+           if form.is_valid():
+              profile=form.save(commit=False)
+              profile.user=user
+              profile.save()
+
+           message = 'Updated profile successfully!'
+       else:
+           form = ProfileForm(instance=seller)
+       context={
+               'user':user,
+               'seller':seller,
+               'form':form,
+               'message':message
+           }
+       return render(request, 'authentication/seller_profile.html', context)
+    return redirect('profile')
+
+

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+{% load static %}
+<link rel='stylesheet' href='{% static "css/dogs.css" %}'>
+<link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<title> Add info</title>
+<meta name='viewport' content='width=device-width, initialscale=1.0'>
+</head>
+<body>
+
+<div  class='form-container'>
+   <h1>Add Details</h1>
+   <div class='error-msg'>
+       {% if form.errors %}
+       <p>There were errors in your:</p>
+       {% for field in form%}
+              {% if field.errors %}
+              <li>{{field.label}}:{{field.errors|striptags}}</li>
+              {% endif %}
+       {% endfor%}
+       {% endif %}
+   </div>
+       {% if message %}
+         <div class='success-msg'>
+            <i class ='fas fa-check-circle'></i>{{message}}
+         </div>
+       {% endif %}
+
+   <form method='post' enctype='mutipart/form-data'>
+   {% csrf_token %}
+   <div  class='form-field'>
+   {{form.bio.label_tag}}
+   {{form.bio}}
+   </div>
+   <div  class='form-field'>
+   {{form.contact.label_tag}}
+   {{form.contact}}
+   </div>
+   <div class='profile-pic-container'>
+   {{form.profile_picture.label_tag}}
+   {{form.profile_picture}}
+   </div>
+   <div class='form-field'>
+   {{form.location.label_tag}}
+   {{form.location}}
+   </div>
+   <div class='link-container' >
+      <button type='submit' class='btn' >Add Info</button>
+   </div>
+   <div  class='back-link'>
+      <a href='{% url "profile" %}'  class='back-link'>Back to Profile</a>
+   </div>
+   </form>
+
+
+
+
+
+</div>
+</body>
+</html>

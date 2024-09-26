@@ -8,9 +8,16 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 </head>
 <body>
+
     <div class='profile-card'>
-      <h1 class='logo' >Welcome {{user.username}}<img src='{% static "img/mac_os.jpg" %}'></h1>
-      
+      <h1 class='logo' >Welcome {{user.username}}</h1>
+      {%if user.profile_img%}
+         <div class='profile-pic-container'>
+            <img src='{{ user.profile_img.url }}' alt='profile image'>
+         </div>
+      {% else %}
+         <p>No profile picture uploaded</p>
+      {% endif %}
     </div>
     <div class='profile-text'>
     <p><i class='fas fa-user fa-sm'></i> <strong>First name:</strong> {{user.first_name}} </p>
@@ -22,11 +29,12 @@
     {%if seller_profile %}
     <div>
         <h3>Seller Profile</h3>
-        <p><strong>Name: </strong>  {{seller_profile.name}} </p>
+        <p><strong>Name: </strong>  {{user.username}} </p>
         <p><strong>Contact: </strong> {{seller_profile.contact}}     </p>
         <p><strong>Location: </strong>  {{seller_profile.location}}    </p>
         <p><strong>Bio: </strong>  {{seller_profile.bio}}</p>
         <p><strong>Balance:</strong> ${{user.account_balance}}</p>
+        <a class='btn' href='{% url "add_profile" %}'> <i class='fas fa user-circle'></i>Add Info</a>
 
     </div>
     <p>For sale</p>
@@ -75,5 +83,6 @@
     {% endfor %}
     <a href='{% url "find_dogs" %}' class='btn'>Browse Dogs</a>
     {%endif %}
+    
 </body>
 </html>
