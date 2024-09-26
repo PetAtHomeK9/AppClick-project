@@ -1,10 +1,12 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-<h2>Available Dogs</h2>
-<ul>
+<link rel="stylesheet" href="{% static 'css/browse.css' %}">
+<div class='browse-container'>
+   <h2>Available Dogs</h2>
     {% for dog in dogs %}
-    <li>{{ dog.name }} - {{ dog.breed }}</li>
+       <div class='each-dog'>
+       {{ dog.name }} - {{ dog.breed }}
+       </div>
     {% endfor %}
-</ul>
 {% endblock %}
