@@ -44,7 +44,7 @@ h1 {
     cursor: pointer;
 }
 
-/* Information about the dog */
+
 .each-dog h6 {
     margin: 0;
     font-size: 1.5rem;
@@ -57,9 +57,13 @@ h1 {
     color: #666;
 }
 
-/* Price styling */
+
 .each-dog p:last-child {
     font-size: 1.2rem;
     color: #4A90E2;
     font-weight: bold;
 }
+
+
+
+
