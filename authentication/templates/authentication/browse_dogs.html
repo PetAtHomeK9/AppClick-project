@@ -1,24 +1,28 @@
 {% extends "base.html" %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/browse.css' %}">
-<link>
-</head>
+
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/browse.css' %}">
+{% if dogs %}
+   <div class='browse-container'>
+    <ul>
+        {% for dog in dogs %}
+            <div class='each-dog'>
+                <a href="{% url 'dog_details' dog.id %}">
+                    <img src="{{ dog.display_img.url }}" alt="{{ dog.name }}" class="dog-thumbnail">
+                    <h2>{{ dog.name }}</h2>
+                    <p><strong>Breed:</strong> {{ dog.breed }}</p>
+                    <p><strong>Sex:</strong> {{ dog.gender }}</p>
+                    <p><strong>Age:</strong> {{ dog.age }} months</p>
+                    <p><strong>Price:</strong> ${{ dog.price }}</p>
+                </a>
+            </div>
+        {% endfor %}
+    </ul>
+    </div>
+{% else %}
+    <p>No Dogs available at the moment...</p>
+{% endif %}
 
-
-<div class="browse-container">
-    <h1>Dogs Available For Sale</h1>
-    {% for dog in dogs %}
-       <div class="each-dog">
-          <a href='{% url "dog_details" dog.id %}'> <img src="{{ dog.display_img.url }}" alt="{{dog.name}}"></a>
-           <h3>{{dog.name}}</h3>
-           <p>Age: {{dog.age}} years</p>
-           <p>Breed: {{dog.breed}}</p>
-           <p>Price: ${{dog.price}}</p>
-           {% empty %}
-           <p>No dogs available at the moment...</p>
-       </div>
-    {% endfor %}
-</div>
 
 {% endblock %}
